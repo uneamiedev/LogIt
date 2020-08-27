@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function feed()
+    {
+        // TO DO : only request logs from followed user
+        return Log::latest()->get();
+    }
 }
