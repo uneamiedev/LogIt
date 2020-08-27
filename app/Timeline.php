@@ -4,17 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Log extends Model
+class Timeline extends Model
 {
-    protected $guarded = [];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function timeline()
+    /**
+     * Get the logs for the timeline.
+     */
+    public function logs()
     {
-        return $this->belongsTo(Timeline::class);
+        return $this->hasMany(Log::class);
     }
 }

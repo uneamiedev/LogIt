@@ -42,4 +42,9 @@ class User extends Authenticatable
         // TO DO : only request logs from followed user
         return Log::latest()->get();
     }
+
+    public function timelines()
+    {
+        return $this->hasMany(Timeline::class);
+    }
 }
