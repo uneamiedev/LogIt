@@ -41,4 +41,11 @@ class TimelineController extends Controller
 
         return redirect()->route('timeline.show', ['timeline' => $timeline]);
     }
+
+    public function destroy(Timeline $timeline)
+    {
+        $timeline->delete();
+
+        return redirect()->route('timelines');
+    }
 }
