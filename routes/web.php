@@ -38,5 +38,6 @@ Route::get('/welcome', function () {
 });
 
 Route::post('/logs', 'LogController@store');
+Route::post('/timelines', 'TimelineController@store');
 
 Auth::routes();

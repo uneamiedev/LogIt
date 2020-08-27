@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Timeline;
+use App\Helpers\Helper;
 
 class TimelineController extends Controller
 {
@@ -11,5 +13,24 @@ class TimelineController extends Controller
         return view('timelines.index', [
             'timelines' => auth()->user()->timelines()->get(),
         ]);
+    }
+
+    public function store(Request $request)
+    {
+        $attributes = $request->validate([
+            'title'         => 'required|max:255',
+            'description'   => 'required|max:255',
+            'url_web'       => 'url',
+        ]);
+
+        Timeline::create([
+            'user_id'       => auth()->id(),
+            'title'         => $attributes['title'],
+            'description'   => $attributes['description'],
+            'cover'         => 'default_cover_'. Helper::getRandTheme() . '.jpg',
+            'url_web'       => $attributes['url_web'] ? $attributes['url_web'] : '',
+        ]);
+
+        return redirect()->route('timelines');
     }
 }
