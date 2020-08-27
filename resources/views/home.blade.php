@@ -16,7 +16,7 @@
                             <button type="submit" class ="btn btn-secondary">Log my day!</button>
                         </div>
                         @error('body')
-                            <div class="bg-danger text-white">{{ __('Sorry, you can\'t publish an empty log!')}}</div>
+                            <div class="bg-danger text-white">{{ $message }}</div>
                         @enderror
                     </div>
                 </form>
