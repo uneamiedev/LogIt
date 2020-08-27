@@ -37,4 +37,6 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::post('/logs', 'LogController@store');
+
 Auth::routes();
