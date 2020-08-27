@@ -28,14 +28,7 @@
 
                 <div class="card-body">
                     @foreach($logs as $log)
-                        <div class="log">
-                            <div class="rounded-circle bg-secondary" style="height: 50px; width: 50px;">
-                                <a href="#"><img src="#" alt="{{ $log->user->name }}"></a>
-                            </div>
-                            <h4>{{ $log->user->name }} @<span>{{ $log->user->name }}</span></h4>
-                            <p>{{ $log->body }}</p>
-                            <div>#projet {{ $log->timeline_id}}</div>
-                        </div>
+                        @include('logs.default')
                     @endforeach
                 </div>
             </div>
