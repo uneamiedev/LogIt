@@ -32,4 +32,14 @@ class Timeline extends Model
             $timeline->slug = Str::of($timeline->title)->slug('-');
         });
     }
+
+    /**
+     * Customize default key name to use slug instead of id
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
