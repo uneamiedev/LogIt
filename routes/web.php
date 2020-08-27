@@ -14,9 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/faq', function () {
+    return view('home');
+});
+
+Route::get('/team', function () {
+    return view('home');
+});
+
+// TO DO :
+// - Site map
+// - Legal
+// - Cookies / Privacy
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
