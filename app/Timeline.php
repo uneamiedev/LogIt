@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Timeline extends Model
 {
+    protected $guarded = [];
 
     public function user()
     {
@@ -18,5 +20,16 @@ class Timeline extends Model
     public function logs()
     {
         return $this->hasMany(Log::class);
+    }
+
+    /**
+     * Generate URL friendly slug from timeline's title
+     */
+    protected static function boot() {
+        parent::boot();
+
+        static::creating(function($timeline) {
+            $timeline->slug = Str::of($timeline->title)->slug('-');
+        });
     }
 }
