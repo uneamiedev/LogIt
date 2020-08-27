@@ -15,6 +15,14 @@ class TimelineController extends Controller
         ]);
     }
 
+    public function show(Timeline $timeline)
+    {
+        return view('timelines.show', [
+            'timeline'  => $timeline,
+            'logs'      => $timeline->logs,
+        ]);
+    }
+
     public function store(Request $request)
     {
         $attributes = $request->validate([
@@ -31,6 +39,6 @@ class TimelineController extends Controller
             'url_web'       => $attributes['url_web'] ? $attributes['url_web'] : '',
         ]);
 
-        return redirect()->route('timelines');
+        return redirect()->route('timeline.show');
     }
 }

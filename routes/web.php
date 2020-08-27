@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/timelines', 'TimelineController@index')->name('timelines');
+Route::get('/timelines/{timeline}', 'TimelineController@show')->name('timeline.show');
 
 Route::get('/faq', function () {
     return view('home');
