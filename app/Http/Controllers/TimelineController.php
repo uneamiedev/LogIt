@@ -31,7 +31,7 @@ class TimelineController extends Controller
             'url_web'       => 'url',
         ]);
 
-        Timeline::create([
+        $timeline = Timeline::create([
             'user_id'       => auth()->id(),
             'title'         => $attributes['title'],
             'description'   => $attributes['description'],
@@ -39,6 +39,6 @@ class TimelineController extends Controller
             'url_web'       => $attributes['url_web'] ? $attributes['url_web'] : '',
         ]);
 
-        return redirect()->route('timeline.show');
+        return redirect()->route('timeline.show', ['timeline' => $timeline]);
     }
 }
