@@ -27,6 +27,12 @@ Route::get('/timelines/{timeline}/edit', 'TimelineController@edit')->name('timel
 Route::put('/timelines/{timeline}', 'TimelineController@update')->name('timeline.update');
 Route::delete('/timelines/{timeline}', 'TimelineController@destroy')->name('timeline.destroy');
 
+
+// Logs
+Route::post('/logs', 'LogController@store');
+Route::delete('/logs/{log}', 'LogController@destroy')->name('log.destroy');
+
+
 Route::get('/faq', function () {
     return view('home');
 });
@@ -44,7 +50,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::post('/logs', 'LogController@store');
+
 
 
 Auth::routes();

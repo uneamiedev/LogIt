@@ -27,4 +27,18 @@ class LogController extends Controller
 
         return redirect()->route('home');
     }
+
+    /**
+     * Delete log
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Log $log)
+    {
+        $timeline = $log->timeline;
+        $log->delete();
+
+        return redirect()->route('timeline.show', ['timeline' => $timeline]);
+    }
 }

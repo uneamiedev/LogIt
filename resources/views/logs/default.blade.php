@@ -4,5 +4,11 @@
     </div>
     <h4>{{ $log->user->name }} @<span>{{ $log->user->name }}</span></h4>
     <p>{{ $log->body }}</p>
-    <a href="{{ route('timeline.show', ['timeline' => $log->timeline->slug]) }}">{{ $log->timeline->title  }}</a>
+    <a class="badge badge-pill badge-primary" href="{{ route('timeline.show', ['timeline' => $log->timeline->slug]) }}">Project: {{ $log->timeline->title  }}</a>
+    <form method="POST" action="{{ route('log.destroy', $log) }}">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-outline-danger" type="submit">{{ __('Delete log')}}</button>
+        {{-- TO DO : Add confirmation --}}
+    </form>
 </div>
