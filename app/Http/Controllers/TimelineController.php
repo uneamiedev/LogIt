@@ -48,4 +48,17 @@ class TimelineController extends Controller
 
         return redirect()->route('timelines');
     }
+
+    /**
+     * Show the form for editing a given timeline
+     *
+     * @param  Timeline  $timeline
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Timeline $timeline)
+    {
+        return view('timelines.edit', [
+            'timeline' => $timeline
+        ]);
+    }
 }
