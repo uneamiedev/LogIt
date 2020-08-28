@@ -43,10 +43,12 @@ class User extends Authenticatable
      */
     public function feed()
     {
-        $ids = $this->follows->pluck('id');
-        $ids->push($this->id);
+        $followed_users_ids = $this->follows()->pluck('id');
 
-        return Log::whereIn('user_id', $ids)->latest()->get();
+        return Log::whereIn('user_id', $followed_users_ids)
+            ->orWhere('user_id', $this->id)
+            ->latest()
+            ->get();
     }
 
     public function timelines()
