@@ -15,6 +15,16 @@ trait Followable
     }
 
     /**
+     * Unfollow a given user
+     *
+     * @param User
+     */
+    public function unfollow(User $user)
+    {
+        return $this->follows()->detach($user);
+    }
+
+    /**
      * Retreive following list
      */
     public function follows()
