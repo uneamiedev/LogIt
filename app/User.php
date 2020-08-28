@@ -37,10 +37,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Get logs created by the logged user and followed users
+     * in descending order by date
+     */
     public function feed()
     {
-        // TO DO : only request logs from followed user
-        return Log::latest()->get();
+        $ids = $this->follows->pluck('id');
+        $ids->push($this->id);
+
+        return Log::whereIn('user_id', $ids)->latest()->get();
     }
 
     public function timelines()
