@@ -18,8 +18,13 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Timelines (index, create, store, show, edit, update, destroy)
 Route::get('/timelines', 'TimelineController@index')->name('timelines');
+Route::post('/timelines', 'TimelineController@store');
 Route::get('/timelines/{timeline}', 'TimelineController@show')->name('timeline.show');
+Route::get('/timelines/{timeline}/edit', 'TimelineController@edit')->name('timeline.edit');
+Route::put('/timelines/{timeline}', 'TimelineController@update')->name('timeline.update');
 Route::delete('/timelines/{timeline}', 'TimelineController@destroy')->name('timeline.destroy');
 
 Route::get('/faq', function () {
@@ -40,6 +45,6 @@ Route::get('/welcome', function () {
 });
 
 Route::post('/logs', 'LogController@store');
-Route::post('/timelines', 'TimelineController@store');
+
 
 Auth::routes();
