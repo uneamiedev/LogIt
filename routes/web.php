@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 // Home
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'LogController@index')->name('home');
 
 // Timelines (index, create, store, show, edit, update, destroy)
 Route::get('/timelines', 'TimelineController@index')->name('timelines');
