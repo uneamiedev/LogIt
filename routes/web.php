@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function() {
     // Logs
     Route::post('/logs', 'LogController@store');
     Route::delete('/logs/{log}', 'LogController@destroy')->name('log.destroy');
+
+    // Follow
+    Route::post('/user/{user}/follow', 'FollowController@store')->name('follow.store');
 });
 
 
