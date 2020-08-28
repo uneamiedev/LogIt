@@ -25,6 +25,20 @@ trait Followable
     }
 
     /**
+     * Follow or unfollow given user depending on the case
+     *
+     * @param User
+     */
+    public function toggleFollow(User $user)
+    {
+        if($this->isFollowing($user)) {
+            return $this->unfollow($user);
+        }
+
+        return $this->follow($user);
+    }
+
+    /**
      * Retreive following list
      */
     public function follows()
