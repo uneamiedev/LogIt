@@ -38,11 +38,11 @@ Route::delete('/logs/{log}', 'LogController@destroy')->name('log.destroy');
 Route::get('/user/{user}', 'ProfileController@show')->name('profile.show');
 
 Route::get('/faq', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Route::get('/team', function () {
-    return view('home');
+    return view('welcome');
 });
 
 // TO DO :
