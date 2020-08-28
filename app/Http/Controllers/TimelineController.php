@@ -61,4 +61,21 @@ class TimelineController extends Controller
             'timeline' => $timeline
         ]);
     }
+
+    public function update(Request $request, Timeline $timeline)
+    {
+        $attributes = $request->validate([
+            'title'         => 'required|max:255',
+            'description'   => 'required|max:255',
+            'url_web'       => 'url',
+        ]);
+
+        $timeline->title = $attributes['title'];
+        $timeline->description = $attributes['description'];
+        $timeline->url_web = $attributes['url_web'] ?? '';
+
+        $timeline->save();
+
+        return redirect()->route('timeline.show', ['timeline' => $timeline]);
+    }
 }
