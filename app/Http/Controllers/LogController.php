@@ -16,13 +16,14 @@ class LogController extends Controller
     public function store(Request $request)
     {
         $attributes = $request->validate([
-            'body' => 'required|max:255',
+            'timeline'  => 'required|exists:timelines,id,user_id,'. auth()->user()->id,
+            'body'      => 'required|max:255',
         ]);
 
         Log::create([
-            'user_id' => auth()->id(),
-            'body' => $attributes['body'],
-            'timeline_id' => 1,
+            'user_id'       => auth()->id(),
+            'timeline_id'   => $attributes['timeline'],
+            'body'          => $attributes['body'],
         ]);
 
         return redirect()->route('home');
