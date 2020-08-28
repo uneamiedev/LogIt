@@ -8,10 +8,10 @@
         <p>Ceci est une courte bio !</p>
         <button class="btn btn-primary btn-lg">Follow</button>
         <div>
-        <a href="#">Timeline: {{ $user->timelines->count() }}</a>
-            <a href="#">Logs: 0</a>
-            <a href="#">Following: {{ $user->follows->count() }}</a>
-            <a href="#">Follower: 0</a>
+            <a class="badge badge-pill badge-secondary" href="#">Timelines: {{ $timelines->count() }}</a>
+            <a class="badge badge-pill badge-secondary" href="#">Logs: {{ $logs->count() }}</a>
+            <a class="badge badge-pill badge-secondary" href="#">Following: {{ $user->follows->count() }}</a>
+            <a class="badge badge-pill badge-secondary" href="#">Follower: 0</a>
         </div>
     </div>
 </div>
@@ -40,11 +40,11 @@
 <div class="jumbotron">
     <div class="container">
         {{-- Timelines'list --}}
-        @if($user->timelines->count() > 0)
+        @if($timelines->count() > 0)
         <div class="card mb-4">
             <div class="card-header">{{ __('Timelines') }}</div>
 
-            @foreach($user->timelines as $timeline)
+            @foreach($timelines as $timeline)
             <div class="card">
                 <div class="card-body">
                     <a href="{{ route('timeline.show', ['timeline' => $timeline])}}">{{ $timeline->title }}</a>
@@ -55,13 +55,20 @@
         @endif
 
         {{-- Logs'list --}}
+        @if($logs->count() > 0)
         <div class="card">
             <div class="card-header">{{ __('Logs') }}</div>
-
             <div class="card-body">
-                <div class="card-body">Log</div>
+            @foreach($logs as $log)
+            <div class="card mb-4">
+                <div class="card-body">
+                    @include('logs.default')
+                </div>
             </div>
+            @endforeach
         </div>
+        </div>
+        @endif
     </div>
 </div>
 @endsection

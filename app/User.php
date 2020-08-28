@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->hasMany(Timeline::class);
     }
 
+    public function logs()
+    {
+        return $this->hasMany(Log::class);
+    }
+
     public function follows()
     {
         return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');

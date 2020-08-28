@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Timeline;
 use App\Helpers\Helper;
 
 class ProfileController extends Controller
@@ -11,7 +12,9 @@ class ProfileController extends Controller
     public function show(User $user)
     {
         return view('profiles.show', [
-            'user'  => $user,
+            'user'          => $user,
+            'timelines'     => $user->timelines,
+            'logs'          => $user->logs
         ]);
     }
 }
