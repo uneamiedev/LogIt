@@ -6,7 +6,12 @@
     <div class="container">
         <h1>{{$user->name}} @<span>{{$user->name}}</span></h1>
         <p>Ceci est une courte bio !</p>
-        <button class="btn btn-primary btn-lg">Follow</button>
+        <form method="POST" action="{{ route('follow.store', $user->id) }}">
+            @csrf
+            <button type="submit" class="btn btn-primary btn-lg">
+                {{ auth()->user()->isFollowing($user) ? 'Unfollow' : 'Follow'}}
+            </button>
+        </form>
         <div>
             <a class="badge badge-pill badge-secondary" href="#">Timelines: {{ $timelines->count() }}</a>
             <a class="badge badge-pill badge-secondary" href="#">Logs: {{ $logs->count() }}</a>
