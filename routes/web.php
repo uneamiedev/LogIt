@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Home
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Timelines (index, create, store, show, edit, update, destroy)
@@ -32,6 +33,9 @@ Route::delete('/timelines/{timeline}', 'TimelineController@destroy')->name('time
 Route::post('/logs', 'LogController@store');
 Route::delete('/logs/{log}', 'LogController@destroy')->name('log.destroy');
 
+// Profile
+// - TO DO: make profile.show to '/@{username}'
+Route::get('/user/{user}', 'ProfileController@show')->name('profile.show');
 
 Route::get('/faq', function () {
     return view('home');
