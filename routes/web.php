@@ -17,21 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Home
-Route::get('/home', 'LogController@index')->name('home');
+Route::middleware('auth')->group(function() {
+    // Home
+    Route::get('/home', 'LogController@index')->name('home');
 
-// Timelines (index, create, store, show, edit, update, destroy)
-Route::get('/timelines', 'TimelineController@index')->name('timelines');
-Route::post('/timelines', 'TimelineController@store');
+    // Timelines (index, create, store, show, edit, update, destroy)
+    Route::get('/timelines', 'TimelineController@index')->name('timelines');
+    Route::post('/timelines', 'TimelineController@store');
+    Route::get('/timelines/{timeline}/edit', 'TimelineController@edit')->name('timeline.edit');
+    Route::put('/timelines/{timeline}', 'TimelineController@update')->name('timeline.update');
+    Route::delete('/timelines/{timeline}', 'TimelineController@destroy')->name('timeline.destroy');
+
+    // Logs
+    Route::post('/logs', 'LogController@store');
+    Route::delete('/logs/{log}', 'LogController@destroy')->name('log.destroy');
+});
+
+
 Route::get('/timelines/{timeline}', 'TimelineController@show')->name('timeline.show');
-Route::get('/timelines/{timeline}/edit', 'TimelineController@edit')->name('timeline.edit');
-Route::put('/timelines/{timeline}', 'TimelineController@update')->name('timeline.update');
-Route::delete('/timelines/{timeline}', 'TimelineController@destroy')->name('timeline.destroy');
 
 
-// Logs
-Route::post('/logs', 'LogController@store');
-Route::delete('/logs/{log}', 'LogController@destroy')->name('log.destroy');
 
 // Profile
 // - TO DO: make profile.show to '/@{username}'
