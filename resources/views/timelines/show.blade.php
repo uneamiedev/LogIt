@@ -17,7 +17,7 @@
                         </div>
                         <p>{{ $timeline->description }}</p>
                         <a href="#" class="btn btn-outline-secondary">Lien</a>
-                        <a href="#" class="btn btn-outline-secondary">Edit timeline</a>
+                        <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug]) }}" class="btn btn-outline-secondary">Edit timeline</a>
                         <a href="#" class="btn btn-outline-secondary">Delete timeline</a>
                     </div>
                 </div>
