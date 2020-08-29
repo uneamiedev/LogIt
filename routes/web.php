@@ -43,7 +43,7 @@ Route::get('/timelines/{timeline}', 'TimelineController@show')->name('timeline.s
 
 // Profile
 // - TO DO: make profile.show to '/@{username}'
-Route::get('/user/{user}', 'ProfileController@show')->name('profile.show');
+Route::get('/@{user:username}', 'ProfileController@show')->name('profile.show');
 
 Route::get('/faq', function () {
     return view('welcome');

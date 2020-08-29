@@ -28,7 +28,7 @@
             <h2>Following</h2>
             <ul>
                 @foreach($user->follows as $followed_user)
-                    <li><a href="{{ route('profile.show', ['user' => $followed_user->id]) }}">{{ $followed_user->name }}</a></li>
+                    <li><a href="{{ route('profile.show', ['user' => $followed_user->username]) }}">{{ $followed_user->name }}</a></li>
                 @endforeach
             </ul>
         </div>
@@ -36,7 +36,7 @@
             <h2>Followers</h2>
             <ul>
                 @foreach($user->followers as $follower)
-                <li><a href="{{ route('profile.show', ['user' => $follower->id]) }}">{{ $follower->name }}</a></li>
+                <li><a href="{{ route('profile.show', ['user' => $follower->username]) }}">{{ $follower->name }}</a></li>
                 @endforeach
             </ul>
         </div>
