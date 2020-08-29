@@ -15,8 +15,8 @@
         <div>
             <a class="badge badge-pill badge-secondary" href="#">Timelines: {{ $timelines->count() }}</a>
             <a class="badge badge-pill badge-secondary" href="#">Logs: {{ $logs->count() }}</a>
-            <a class="badge badge-pill badge-secondary" href="#">Following: {{ $user->follows->count() }}</a>
-            <a class="badge badge-pill badge-secondary" href="#">Follower: 0</a>
+            <a class="badge badge-pill badge-secondary" href="#">Following: {{ $user->follows()->count() }}</a>
+            <a class="badge badge-pill badge-secondary" href="#">Follower: {{ $user->followers()->count() }}</a>
         </div>
     </div>
 </div>
@@ -28,14 +28,16 @@
             <h2>Following</h2>
             <ul>
                 @foreach($user->follows as $followed_user)
-            <li><a href="{{ route('profile.show', ['user' => $followed_user->id]) }}">{{ $followed_user->name }}</a></li>
+                    <li><a href="{{ route('profile.show', ['user' => $followed_user->id]) }}">{{ $followed_user->name }}</a></li>
                 @endforeach
             </ul>
         </div>
         <div class="col-md-6">
             <h2>Followers</h2>
             <ul>
-                <li>User</li>
+                @foreach($user->followers as $follower)
+                <li><a href="{{ route('profile.show', ['user' => $follower->id]) }}">{{ $follower->name }}</a></li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -45,7 +47,7 @@
 <div class="jumbotron">
     <div class="container">
         {{-- Timelines'list --}}
-        @if($timelines->count() > 0)
+        @if($timelines->isNotEmpty())
         <div class="card mb-4">
             <div class="card-header">{{ __('Timelines') }}</div>
 
@@ -60,7 +62,7 @@
         @endif
 
         {{-- Logs'list --}}
-        @if($logs->count() > 0)
+        @if($logs->isNotEmpty())
         <div class="card">
             <div class="card-header">{{ __('Logs') }}</div>
             <div class="card-body">
