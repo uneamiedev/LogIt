@@ -4,8 +4,19 @@
 {{-- Header --}}
 <div class="jumbotron">
     <div class="container">
-        <h1>{{$user->name}} @<span>{{$user->name}}</span></h1>
-        <p>Ceci est une courte bio !</p>
+        <h1>{{$user->name}} <span>{{'@'}}{{$user->username}}</span></h1>
+        @if($user->bio)
+            <p>{{$user->bio}}</p>
+        @endif
+
+        @if($user->location)
+            <p class="btn btn-link">{{$user->location}}</p>
+        @endif
+
+        @if($user->link_web)
+            <a class="btn btn-link" href="{{$user->link_web}}">{{$user->link_web}}</a>
+        @endif
+
         <form method="POST" action="{{ route('follow.store', $user->id) }}">
             @csrf
             <button type="submit" class="btn btn-primary btn-lg">
