@@ -4,7 +4,8 @@
     </div>
     <h4>{{ $log->user->name }} @<span>{{ $log->user->name }}</span></h4>
     <p>{{ $log->body }}</p>
-    <a class="badge badge-pill badge-primary" href="{{ route('timeline.show', ['timeline' => $log->timeline->slug]) }}">Project: {{ $log->timeline->title  }}</a>
+    {{-- TO DO: pass $user->username to the route --}}
+    {{-- <a class="badge badge-pill badge-primary" href="{{ route('timeline.show', ['timeline' => $log->timeline->slug]) }}">Project: {{ $log->timeline->title  }}</a> --}}
     @auth
     <form method="POST" action="{{ route('log.destroy', $log) }}">
         @csrf
