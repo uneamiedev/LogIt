@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Timeline;
+use App\User;
 use App\Helpers\Helper;
 
 class TimelineController extends Controller
@@ -15,7 +16,15 @@ class TimelineController extends Controller
         ]);
     }
 
-    public function show(Timeline $timeline)
+    public function publicIndex(User $user)
+    {
+        return view('timelines.index', [
+            'timelines' => $user->timelines()->get(),
+            'user'      => $user,
+        ]);
+    }
+
+    public function show(User $user, Timeline $timeline)
     {
         return view('timelines.show', [
             'timeline'  => $timeline,
