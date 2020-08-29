@@ -55,8 +55,8 @@
                             </div>
                             <h4><a href="#">{{ $timeline->title }}</a></h4>
                             <p>{{ $timeline->description }}</p>
-                            <a href="{{ route('timeline.show', ['timeline' => $timeline->slug]) }}" class="btn btn-outline-secondary">See timeline</a>
-                            <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug]) }}" class="btn btn-outline-secondary">Edit timeline</a>
+                            <a href="{{ route('timeline.show', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">See timeline</a>
+                            <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">Edit timeline</a>
                             <form method="POST" action="/timelines/{{$timeline->slug}}">
                                 @csrf
                                 @method('DELETE')

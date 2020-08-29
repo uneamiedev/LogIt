@@ -17,12 +17,12 @@
             <a class="btn btn-link" href="{{$user->link_web}}">{{$user->link_web}}</a>
         @endif
 
-        <form method="POST" action="{{ route('follow.store', $user->id) }}">
+        {{-- <form method="POST" action="{{ route('follow.store', $user->id) }}">
             @csrf
             <button type="submit" class="btn btn-primary btn-lg">
                 {{ auth()->user()->isFollowing($user) ? 'Unfollow' : 'Follow'}}
             </button>
-        </form>
+        </form> --}}
         <div>
             <a class="badge badge-pill badge-secondary" href="#">Timelines: {{ $timelines->count() }}</a>
             <a class="badge badge-pill badge-secondary" href="#">Logs: {{ $logs->count() }}</a>
@@ -65,7 +65,7 @@
             @foreach($timelines as $timeline)
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('timeline.show', ['timeline' => $timeline])}}">{{ $timeline->title }}</a>
+                    <a href="{{ route('timeline.show', ['timeline' => $timeline, 'user' => $user->username])}}">{{ $timeline->title }}</a>
                 </div>
             </div>
             @endforeach
