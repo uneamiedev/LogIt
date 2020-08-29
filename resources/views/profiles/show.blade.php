@@ -17,12 +17,15 @@
             <a class="btn btn-link" href="{{$user->link_web}}">{{$user->link_web}}</a>
         @endif
 
-        {{-- <form method="POST" action="{{ route('follow.store', $user->id) }}">
+        @auth
+        <form method="POST" action="{{ route('follow.store', $user->id) }}">
             @csrf
             <button type="submit" class="btn btn-primary btn-lg">
                 {{ auth()->user()->isFollowing($user) ? 'Unfollow' : 'Follow'}}
             </button>
-        </form> --}}
+        </form>
+        @endauth
+
         <div>
             <a class="badge badge-pill badge-secondary" href="#">Timelines: {{ $timelines->count() }}</a>
             <a class="badge badge-pill badge-secondary" href="#">Logs: {{ $logs->count() }}</a>

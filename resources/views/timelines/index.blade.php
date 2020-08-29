@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             {{-- Log Creation form --}}
+            @auth
             <div class="card mb-4">
                 <div class="card-header">{{ __('Create a timeline') }}</div>
 
@@ -42,6 +43,7 @@
                     </div>
                 </form>
             </div>
+            @endauth
 
             {{-- Timeline Feed --}}
             <div class="card">
@@ -56,6 +58,7 @@
                             <h4><a href="#">{{ $timeline->title }}</a></h4>
                             <p>{{ $timeline->description }}</p>
                             <a href="{{ route('timeline.show', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">See timeline</a>
+                            @auth
                             <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">Edit timeline</a>
                             <form method="POST" action="/timelines/{{$timeline->slug}}">
                                 @csrf
@@ -63,6 +66,7 @@
                                 <button class="btn btn-outline-danger" type="submit">{{ __('Delete timeline')}}</button>
                                 {{-- TO DO : Add confirmation --}}
                             </form>
+                            @endauth
                         </div>
                     @endforeach
                 </div>
