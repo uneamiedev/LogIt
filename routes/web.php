@@ -36,8 +36,8 @@ Route::middleware('auth')->group(function() {
     Route::post('/user/{user}/follow', 'FollowController@store')->name('follow.store');
 });
 
-
-Route::get('/timelines/{timeline}', 'TimelineController@show')->name('timeline.show');
+Route::get('/@{user:username}/timelines', 'TimelineController@publicIndex')->name('timeline.index.public');
+Route::get('/@{user:username}/timelines/{timeline}', 'TimelineController@show')->name('timeline.show');
 
 
 
