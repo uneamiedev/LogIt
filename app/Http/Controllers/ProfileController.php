@@ -17,4 +17,9 @@ class ProfileController extends Controller
             'logs'          => $user->logs
         ]);
     }
+
+    public function edit(User $user)
+    {
+        return view('profiles.edit', compact('user'));
+    }
 }

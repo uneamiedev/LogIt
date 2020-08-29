@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function() {
 
     // Follow
     Route::post('/user/{user}/follow', 'FollowController@store')->name('follow.store');
+
+    // Profile
+    Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit')->middleware('can:update,user');
 });
 
 Route::get('/@{user:username}/timelines', 'TimelineController@publicIndex')->name('timeline.index.public');
