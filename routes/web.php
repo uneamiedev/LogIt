@@ -29,8 +29,8 @@ Route::middleware('auth')->group(function() {
     Route::delete('/timelines/{timeline}', 'TimelineController@destroy')->name('timeline.destroy')->middleware('can:delete,timeline');
 
     // Logs
-    Route::post('/logs', 'LogController@store');
-    Route::delete('/logs/{log}', 'LogController@destroy')->name('log.destroy');
+    Route::post('/logs', 'LogController@store')->middleware('can:create,App\Log');;
+    Route::delete('/logs/{log}', 'LogController@destroy')->name('log.destroy')->middleware('can:delete,log');
 
     // Follow
     Route::post('/user/{user}/follow', 'FollowController@store')->name('follow.store');

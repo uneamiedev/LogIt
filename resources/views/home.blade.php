@@ -6,6 +6,7 @@
         <div class="col-md-8">
             {{-- TO DO: Add timeline creation form --}}
 
+            @can('create', App\Log::class)
             @if($timelines->count() > 0)
                 {{-- Log Creation form --}}
                 <div class="card">
@@ -40,6 +41,7 @@
                     </form>
                 </div>
             @endif
+            @endcan
 
             {{-- Logs Feed --}}
             <div class="card">
