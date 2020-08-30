@@ -9,7 +9,7 @@
             <div class="card mb-4">
                 <div class="card-header">{{ __('Create a timeline') }}</div>
 
-                <form method="POST" action="/timelines">
+                <form method="POST" action="{{ route('timeline.store') }}">
                     @csrf
                     <div class="card-body">
                         {{-- Title --}}
@@ -57,9 +57,10 @@
                             </div>
                             <h4><a href="#">{{ $timeline->title }}</a></h4>
                             <p>{{ $timeline->description }}</p>
-                            {{-- <a href="{{ route('timeline.show', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">See timeline</a> --}}
-                            @auth
-                            {{-- <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">Edit timeline</a> --}}
+                            <a href="{{ route('timeline.show', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">See timeline</a>
+                            @can('update', $timeline)
+                            <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">Edit timeline</a>
+                            @endcan
                             @can('delete', $timeline)
                                 <form method="POST" action="/timelines/{{$timeline->slug}}">
                                     @csrf
@@ -68,7 +69,6 @@
                                     {{-- TO DO : Add confirmation --}}
                                 </form>
                             @endcan
-                            @endauth
                         </div>
                     @endforeach
                 </div>

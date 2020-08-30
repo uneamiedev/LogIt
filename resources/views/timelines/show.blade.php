@@ -18,7 +18,7 @@
                         <p>{{ $timeline->description }}</p>
                         <a href="#" class="btn btn-outline-secondary">Lien</a>
                         @can('update', $timeline)
-                            <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug]) }}" class="btn btn-outline-secondary">Edit timeline</a>
+                            <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">Edit timeline</a>
                         @endcan
                         @can('delete', $timeline)
                             <a href="#" class="btn btn-outline-secondary">Delete timeline</a>

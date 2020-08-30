@@ -13,6 +13,7 @@ class TimelineController extends Controller
     {
         return view('timelines.index', [
             'timelines' => auth()->user()->timelines()->get(),
+            'user'      => auth()->user(),
         ]);
     }
 
@@ -29,6 +30,7 @@ class TimelineController extends Controller
         return view('timelines.show', [
             'timeline'  => $timeline,
             'logs'      => $timeline->logs,
+            'user'      => $user,
         ]);
     }
 
@@ -48,14 +50,17 @@ class TimelineController extends Controller
             'url_web'       => $attributes['url_web'] ? $attributes['url_web'] : '',
         ]);
 
-        return redirect()->route('timeline.show', ['timeline' => $timeline]);
+        return redirect()->route('timeline.show', [
+            'timeline'  => $timeline,
+            'user'      => auth()->user(),
+        ]);
     }
 
     public function destroy(Timeline $timeline)
     {
         $timeline->delete();
 
-        return redirect()->route('timelines');
+        return redirect()->route('timeline.index');
     }
 
     /**
@@ -85,6 +90,9 @@ class TimelineController extends Controller
 
         $timeline->save();
 
-        return redirect()->route('timeline.show', ['timeline' => $timeline]);
+        return redirect()->route('timeline.show', [
+            'timeline' => $timeline,
+            'user' => auth()->user()
+        ]);
     }
 }

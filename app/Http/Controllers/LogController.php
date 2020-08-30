@@ -10,7 +10,7 @@ class LogController extends Controller
     public function index()
     {
         return view('home', [
-            'logs' => auth()->user()->feed(),
+            'logs'      => auth()->user()->feed(),
             'timelines' => auth()->user()->timelines()->latest()->get(),
         ]);
     }
