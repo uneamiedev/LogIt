@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Likable;
 
 class Timeline extends Model
 {
+    use Likable;
+
     protected $guarded = [];
 
     public function user()
