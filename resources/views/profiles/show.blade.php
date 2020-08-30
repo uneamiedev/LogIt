@@ -17,14 +17,16 @@
             <a class="btn btn-link" href="{{$user->link_web}}">{{$user->link_web}}</a>
         @endif
 
-        @unless(auth()->user()->is($user))
-        <form method="POST" action="{{ route('follow.store', $user->id) }}">
-            @csrf
-            <button type="submit" class="btn btn-primary btn-lg">
-                {{ auth()->user()->isFollowing($user) ? 'Unfollow' : 'Follow'}}
-            </button>
-        </form>
-        @endunless
+        @auth
+            @unless(auth()->user()->is($user))
+            <form method="POST" action="{{ route('follow.store', $user->id) }}">
+                @csrf
+                <button type="submit" class="btn btn-primary btn-lg">
+                    {{ auth()->user()->isFollowing($user) ? 'Unfollow' : 'Follow'}}
+                </button>
+            </form>
+            @endunless
+        @endauth
 
         @can('update', $user)
             <a href="{{ route('profile.edit', $user->id) }}" class="btn btn-outline-secondary btn-lg">
