@@ -22,4 +22,27 @@ class ProfileController extends Controller
     {
         return view('profiles.edit', compact('user'));
     }
+
+    public function update(Request $request, User $user)
+    {
+        $attributes = $request->validate([
+            'name'      => 'string|required|max:255',
+            'bio'       => 'string|max:255',
+            'link_web'  => 'url',
+            'location'  => 'string|max:50',
+        ]);
+
+        $user->name = $attributes['name'];
+        $user->bio = $attributes['bio'] ?? '';
+        $user->link_web = $attributes['link_web'] ?? '';
+        $user->location = $attributes['location'] ?? '';
+
+        $user->save();
+
+        return redirect()->route('profile.show', [
+            'user' => $user,
+            'timelines'     => $user->timelines,
+            'logs'          => $user->logs
+        ]);
+    }
 }

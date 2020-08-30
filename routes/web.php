@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function() {
 
     // Profile
     Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit')->middleware('can:update,user');
+    Route::patch('/@{user:username}', 'ProfileController@update')->name('profile.update')->middleware('can:update,user');
 });
 
 // Public routes
