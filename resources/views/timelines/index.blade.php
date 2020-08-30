@@ -60,12 +60,14 @@
                             <a href="{{ route('timeline.show', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">See timeline</a>
                             @auth
                             <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">Edit timeline</a>
-                            <form method="POST" action="/timelines/{{$timeline->slug}}">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-outline-danger" type="submit">{{ __('Delete timeline')}}</button>
-                                {{-- TO DO : Add confirmation --}}
-                            </form>
+                            @can('delete', $timeline)
+                                <form method="POST" action="/timelines/{{$timeline->slug}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-outline-danger" type="submit">{{ __('Delete timeline')}}</button>
+                                    {{-- TO DO : Add confirmation --}}
+                                </form>
+                            @endcan
                             @endauth
                         </div>
                     @endforeach
