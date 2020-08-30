@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function() {
     Route::post('/user/{user}/follow', 'FollowController@store')->name('follow.store');
 
     // Profile
-    Route::get('/profile/{user}/edit', 'ProfileController@edit')->name('profile.edit')->middleware('can:update,user');
+    Route::get('/settings/{user}/edit', 'ProfileController@edit')->name('profile.edit')->middleware('can:update,user');
     Route::patch('/@{user:username}', 'ProfileController@update')->name('profile.update')->middleware('can:update,user');
 });
 

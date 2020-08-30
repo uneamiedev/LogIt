@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Timeline;
 use App\Helpers\Helper;
+use Illuminate\Validation\Rule;
+
 
 class ProfileController extends Controller
 {
@@ -30,19 +32,26 @@ class ProfileController extends Controller
             'bio'       => 'string|max:255',
             'link_web'  => 'url',
             'location'  => 'string|max:50',
+            'username'  => 'string|required|max:50|alpha_dash|'. Rule::unique('users')->ignore($user),
+            'email'     => 'required|email|max:255|'. Rule::unique('users')->ignore($user),
+            'password'  => 'string|required|min:8|max:255|confirmed',
         ]);
 
         $user->name = $attributes['name'];
         $user->bio = $attributes['bio'] ?? '';
         $user->link_web = $attributes['link_web'] ?? '';
         $user->location = $attributes['location'] ?? '';
+        $user->username = $attributes['username'];
+        $user->email = $attributes['email'];
+        $user->password = $attributes['password'];
+
 
         $user->save();
 
         return redirect()->route('profile.show', [
-            'user' => $user,
-            'timelines'     => $user->timelines,
-            'logs'          => $user->logs
+            'user'      => $user,
+            'timelines' => $user->timelines,
+            'logs'      => $user->logs
         ]);
     }
 }
