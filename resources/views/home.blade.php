@@ -48,9 +48,12 @@
                 <div class="card-header">{{ __('Home') }}</div>
 
                 <div class="card-body">
-                    @foreach($logs as $log)
+                    @forelse($logs as $log)
                         @include('logs.default')
-                    @endforeach
+                    @empty
+                        <p>{{ __('Follow other users or start loging our progress') }}</p>
+                        {{-- TO DO: add timeline creation form, log creation form, link to explore page --}}
+                    @endforelse
                 </div>
             </div>
         </div>
