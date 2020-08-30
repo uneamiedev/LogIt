@@ -26,11 +26,11 @@
         </form>
         @endunless
 
-        @if(auth()->user()->is($user))
+        @can('update', $user)
             <a href="{{ route('profile.edit', $user->id) }}" class="btn btn-outline-secondary btn-lg">
                 {{ __('Edit profile') }}
             </a>
-        @endif
+        @endcan
 
         <div>
             <a class="badge badge-pill badge-secondary" href="#">Timelines: {{ $timelines->count() }}</a>
