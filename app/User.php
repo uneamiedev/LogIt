@@ -97,4 +97,12 @@ class User extends Authenticatable
     {
         return User::all()->contains('username', $username);
     }
+
+    /**
+     * Get timelines liked by the user
+     */
+    public function likes()
+    {
+        return $this->belongsToMany(Timeline::class, 'likes', 'user_id', 'timeline_id');
+    }
 }
