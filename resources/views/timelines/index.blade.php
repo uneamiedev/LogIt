@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             {{-- Log Creation form --}}
-            @auth
+            @can('create', App\Timeline::class)
             <div class="card mb-4">
                 <div class="card-header">{{ __('Create a timeline') }}</div>
 
@@ -43,7 +43,7 @@
                     </div>
                 </form>
             </div>
-            @endauth
+            @endcan
 
             {{-- Timeline Feed --}}
             <div class="card">
@@ -57,9 +57,9 @@
                             </div>
                             <h4><a href="#">{{ $timeline->title }}</a></h4>
                             <p>{{ $timeline->description }}</p>
-                            <a href="{{ route('timeline.show', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">See timeline</a>
+                            {{-- <a href="{{ route('timeline.show', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">See timeline</a> --}}
                             @auth
-                            <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">Edit timeline</a>
+                            {{-- <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug, 'user' => $user->username]) }}" class="btn btn-outline-secondary">Edit timeline</a> --}}
                             @can('delete', $timeline)
                                 <form method="POST" action="/timelines/{{$timeline->slug}}">
                                     @csrf
