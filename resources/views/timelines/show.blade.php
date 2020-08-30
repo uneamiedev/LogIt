@@ -17,10 +17,10 @@
                         </div>
                         <p>{{ $timeline->description }}</p>
                         <a href="#" class="btn btn-outline-secondary">Lien</a>
-                        @auth
+                        @can('update', $timeline)
                             <a href="{{ route('timeline.edit', ['timeline' => $timeline->slug]) }}" class="btn btn-outline-secondary">Edit timeline</a>
+                        @endcan
                             <a href="#" class="btn btn-outline-secondary">Delete timeline</a>
-                        @endauth
                     </div>
                 </div>
             </div>

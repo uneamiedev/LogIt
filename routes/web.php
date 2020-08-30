@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function() {
     // Timelines (index, create, store, show, edit, update, destroy)
     Route::get('/timelines', 'TimelineController@index')->name('timelines');
     Route::post('/timelines', 'TimelineController@store');
-    Route::get('/timelines/{timeline}/edit', 'TimelineController@edit')->name('timeline.edit');
+    Route::get('/timelines/{timeline}/edit', 'TimelineController@edit')->name('timeline.edit')->middleware('can:update,timeline');
     Route::put('/timelines/{timeline}', 'TimelineController@update')->name('timeline.update');
     Route::delete('/timelines/{timeline}', 'TimelineController@destroy')->name('timeline.destroy');
 
