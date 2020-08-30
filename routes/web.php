@@ -38,6 +38,9 @@ Route::middleware('auth')->group(function() {
     // Profile
     Route::get('/settings/{user}/edit', 'ProfileController@edit')->name('profile.edit')->middleware('can:update,user');
     Route::patch('/@{user:username}', 'ProfileController@update')->name('profile.update')->middleware('can:update,user');
+
+    // Like
+    Route::post('/timelines/{timeline}/like', 'LikeController@store')->name('like.store');
 });
 
 // Public routes
