@@ -13,4 +13,9 @@ class UserPolicy
     {
         return $authUser->is($user);
     }
+
+    public function delete(User $authUser, User $user)
+    {
+        return $authUser->is($user);
+    }
 }

@@ -54,4 +54,11 @@ class ProfileController extends Controller
             'logs'      => $user->logs
         ]);
     }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return view('welcome');
+    }
 }

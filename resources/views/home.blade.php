@@ -5,11 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             {{-- TO DO: Add timeline creation form --}}
+            @can('delete', auth()->user())
+                @include('profiles.delete')
+            @endcan
 
             @can('create', App\Log::class)
             @if($timelines->count() > 0)
                 {{-- Log Creation form --}}
-                <div class="card">
+                <div class="card mb-4">
                     <form method="POST" action="/logs">
                         @csrf
                         <div class="from-group">
