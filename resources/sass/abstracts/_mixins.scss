@@ -1,0 +1,155 @@
+/**
+* Mixins
+*
+* Mediqueries, Display helpers, Miscellaneous helpers (mx-auto, pseudo, etc)
+*/
+
+/**
+* Mediaqueries
+*
+* All styles should be written mobile-first, only a limited few should be max-width.
+*/
+@mixin for-phone-only {
+    @media (max-width: 599px) { @content; }
+}
+
+@mixin for-tablet-portrait-up {
+    @media (min-width: $small ) { @content; }
+}
+
+@mixin for-tablet-landscape-up {
+    @media (min-width: $medium ) { @content; }
+}
+
+@mixin for-desktop-up {
+    @media (min-width: $large ) { @content; }
+}
+
+
+/**
+* Display Helpers
+*
+* Set of mixins to use to alter element's visibility
+*/
+
+// Hide from both screenreaders and browsers
+@mixin hidden {
+    display: none;
+    visibility: hidden;
+}
+
+@mixin visible($state: 'block') {
+    display: unquote($state);
+    visibility: visible;
+}
+
+// Hide visually and from screenreaders, but maintain layout
+@mixin invisible {
+    visibility: hidden;
+}
+
+// Hide only visually, but have it available for screenreaders
+@mixin sr-only($focusable: false) {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width:1px;
+
+    @if $focusable {
+        @include sr-focusable;
+    }
+}
+
+@mixin sr-reset {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+// Allow the element to be focusable when navigated to via the keyboard
+@mixin sr-focusable {
+    &:active,
+    &:focus {
+        clip: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        position: static;
+        width: auto;
+    }
+}
+
+
+
+/**
+* Gradient Helpers
+*
+* Set of mixins to use to set element's background to gradient
+*/
+@mixin gradient($theme, $top-to-bottom: false) {
+
+    @if $top-to-bottom {
+        $deg: '180deg';
+    }
+
+    $deg: '90deg';
+
+    @if ($theme == 'purple') {
+        background-color: $purple;
+        background-image: linear-gradient($deg, $purple 0%, $indigo 100%);
+    }
+    @if ($theme == 'cyan') {
+        background-color: $cyan;
+        background-image: linear-gradient($deg, $cyan 0%, $green 100%);
+    }
+    @if ($theme == 'orange') {
+        background-color: $orange;
+        background-image: linear-gradient($deg, $orange 0%, $orange-light 100%);
+    }
+    @if ($theme == 'pink') {
+        background-color: $pink;
+        background-image: linear-gradient($deg, $pink 0%, $purple 100%);
+    }
+
+    background-size: 100%;
+    background-repeat: repeat;
+}
+
+@mixin gradient-avatar($theme) {
+    @include gradient($theme, true);
+}
+
+@mixin gradient-text($theme) {
+    @include gradient($theme);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+
+/**
+* Miscellaneous Helpers
+*/
+
+// Center element using left and right margins
+@mixin mx-auto {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+// Declare standard porperties used by ::before and ::after
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+    content: $content;
+    display: $display;
+    position: $pos;
+}
