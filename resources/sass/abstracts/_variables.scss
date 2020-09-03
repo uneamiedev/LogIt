@@ -1,20 +1,42 @@
-// Body
-$body-bg: #f8fafc;
+/**
+* Variables
+*/
 
-// Typography
+/**
+* Colors
+*/
+
+// Primary
+$purple: #7800ff;
+$cyan: #5fd5ff;
+$pink: #fe3472;
+$orange: #ff502a;
+
+// Secondary
+$purple-light: #8364ce;
+$green: #46bcaa;
+$indigo: #4835d5;
+$orange-light: #ff7f37;
+
+// Text
+$white: #ffffff;
+
+// Background
+$black: #101010;
+
+
+/**
+* Typography
+*/
 $f-primary: 'Montserrat', sans-serif;
 $f-secondary: 'Share Tech Mono', monospace;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+$c-default: $white;
+$-accent: $purple;
 
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+
+/**
+* Breakpoints
+*/
+$small: 600px;
+$medium: 900px;
+$large: 1200px;
