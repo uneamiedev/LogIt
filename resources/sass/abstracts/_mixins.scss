@@ -93,7 +93,7 @@
 *
 * Set of mixins to use to set element's background to gradient
 */
-@mixin gradient($theme, $top-to-bottom: false) {
+@mixin gradient($theme, $top-to-bottom: false, $color:'') {
 
     @if $top-to-bottom {
         $deg: '180deg';
@@ -116,6 +116,11 @@
     @if ($theme == 'pink') {
         background-color: $pink;
         background-image: linear-gradient($deg, $pink 0%, $purple 100%);
+    }
+
+    @if ($theme == 'none') {
+        background-color: $color;
+        background-image: linear-gradient($deg, $color , $black 100%);
     }
 
     background-size: 100%;
@@ -152,4 +157,10 @@
     content: $content;
     display: $display;
     position: $pos;
+}
+
+
+@mixin blur($rgba) {
+    background-color: $rgba;
+    backdrop-filter: blur(10px);
 }
