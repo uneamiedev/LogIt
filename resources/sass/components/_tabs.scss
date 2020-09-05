@@ -1,0 +1,19 @@
+.tabs {
+    border-bottom: 2px solid $c-border;
+
+    ul {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__item {
+        width: 25%;
+        padding: 13px 0;
+        font-weight: 500;
+        text-align: center;
+
+        &.current {
+            border-bottom: 5px solid $c-border;
+        }
+    }
+}
