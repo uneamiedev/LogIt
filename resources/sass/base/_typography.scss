@@ -74,4 +74,10 @@ p {
 a {
     color: inherit; /* blue colors for links too */
     font-size: $f-base;
+    font-weight: inherit;
+    text-decoration: none;
+
+    &:hover {
+        color: $c-accent;
+    }
 }
