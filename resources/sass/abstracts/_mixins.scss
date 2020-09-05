@@ -103,24 +103,24 @@
 
     @if ($theme == 'purple') {
         background-color: $purple;
-        background-image: linear-gradient($deg, $purple 0%, $indigo 100%);
+        background-image: linear-gradient(unquote($deg), $purple 0%, $indigo 100%);
     }
     @if ($theme == 'cyan') {
         background-color: $cyan;
-        background-image: linear-gradient($deg, $cyan 0%, $green 100%);
+        background-image: linear-gradient(unquote($deg), $cyan 0%, $green 100%);
     }
     @if ($theme == 'orange') {
         background-color: $orange;
-        background-image: linear-gradient($deg, $orange 0%, $orange-light 100%);
+        background-image: linear-gradient(unquote($deg), $orange 0%, $orange-light 100%);
     }
     @if ($theme == 'pink') {
         background-color: $pink;
-        background-image: linear-gradient($deg, $pink 0%, $purple 100%);
+        background-image: linear-gradient(unquote($deg), $pink 0%, $purple 100%);
     }
 
     @if ($theme == 'none') {
         background-color: $color;
-        background-image: linear-gradient($deg, $color , $black 100%);
+        background-image: linear-gradient(unquote($deg), $color , $black 100%);
     }
 
     background-size: 100%;
