@@ -56,18 +56,18 @@ h4, .h4 {
 
 // Paragraphs
 p {
-    margin-bottom: 3em;
+    margin-bottom: 2em;
     text-align: center;
     font-size: $f-base;
-    line-height: 1.2;
+    line-height: 1.5;
 
-    @include for-tablet-portrait-up {
-        font-size: $f-xs;
-    }
+    // @include for-tablet-portrait-up {
+    //     font-size: $f-xs;
+    // }
 
-    @include for-desktop-up {
-        font-size: $f-s;
-    }
+    // @include for-desktop-up {
+    //     font-size: $f-s;
+    // }
 }
 
 // Links
