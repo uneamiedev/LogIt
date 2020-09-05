@@ -1,0 +1,77 @@
+// Titles
+h1,.h1, h2, .h2, h3, .h3, h4, .h4{
+    margin-bottom: 2.143em;
+    text-align: center;
+    font-weight: 600;
+}
+
+h1, .h1 {
+    font-size: $f-m;
+
+    @include for-tablet-portrait-up {
+        font-size: $f-xl;
+    }
+
+    @include for-desktop-up {
+        font-size: $f-2xl;
+    }
+}
+
+h2, .h2 {
+    font-size: $f-s;
+
+    @include for-tablet-portrait-up {
+        font-size: $f-l;
+    }
+
+    @include for-desktop-up {
+        font-size: $f-xl;
+    }
+}
+
+h3, .h3 {
+    font-size: $f-xs;
+
+    @include for-tablet-portrait-up {
+        font-size: $f-s;
+    }
+
+    @include for-desktop-up {
+        font-size: $f-m;
+    }
+}
+
+h4, .h4 {
+    font-size: $f-xs;
+    font-weight: 400;
+
+    @include for-tablet-portrait-up {
+        font-size: $f-s;
+    }
+
+    @include for-desktop-up {
+        font-size: $f-m;
+    }
+}
+
+// Paragraphs
+p {
+    margin-bottom: 3em;
+    text-align: center;
+    font-size: $f-base;
+    line-height: 1.2;
+
+    @include for-tablet-portrait-up {
+        font-size: $f-xs;
+    }
+
+    @include for-desktop-up {
+        font-size: $f-s;
+    }
+}
+
+// Links
+a {
+    color: inherit; /* blue colors for links too */
+    font-size: $f-base;
+}
