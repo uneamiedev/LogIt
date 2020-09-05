@@ -95,11 +95,11 @@
 */
 @mixin gradient($theme, $top-to-bottom: false, $color:'') {
 
+    $deg: '90deg';
+
     @if $top-to-bottom {
         $deg: '180deg';
     }
-
-    $deg: '90deg';
 
     @if ($theme == 'purple') {
         background-color: $purple;
@@ -128,7 +128,7 @@
 }
 
 @mixin gradient-avatar($theme) {
-    @include gradient($theme, true);
+    @include gradient($theme, $top-to-bottom: true);
 }
 
 @mixin gradient-text($theme) {
@@ -160,7 +160,22 @@
 }
 
 
-@mixin blur($rgba) {
-    background-color: $rgba;
-    backdrop-filter: blur(10px);
+@mixin frost($theme) {
+
+    @if ($theme == 'purple') {
+        background-color: rgba(120, 0, 255, 0.4);
+        backdrop-filter: blur(10px);
+    }
+    @if ($theme == 'cyan') {
+        background-color: rgba(120, 0, 255, 0.4);
+        backdrop-filter: blur(10px);
+    }
+    @if ($theme == 'orange') {
+        background-color: rgba(120, 0, 255, 0.4);
+        backdrop-filter: blur(10px);
+    }
+    @if ($theme == 'pink') {
+        background-color: rgba(120, 0, 255, 0.4);
+        backdrop-filter: blur(10px);
+    }
 }
