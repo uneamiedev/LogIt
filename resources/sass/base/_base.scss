@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    font-family: $f-primary;
+    font-size: $f-base;
+    color: $c-default;
+    background-color: $c-bg;
+}
+
+.container {
+    @include mx-auto;
+    width: 90%;
+    max-width: 1100px;
+    background-color: rgba(255, 255, 255, 0.4);
+
+    @include for-tablet-portrait-up {
+        background-color: rgba(0, 47, 255, 0.4);
+    }
+
+    @include for-tablet-landscape-up {
+        background-color: rgba(172, 0, 0, 0.4);
+    }
+
+    @include for-desktop-up {
+        background-color: rgba(0, 255, 34, 0.4);
+    }
+}
