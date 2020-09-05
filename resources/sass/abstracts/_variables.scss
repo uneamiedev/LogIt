@@ -1,8 +1,4 @@
 /**
-* Variables
-*/
-
-/**
 * Colors
 */
 
@@ -31,8 +27,17 @@ $black: #101010;
 $f-primary: 'Montserrat', sans-serif;
 $f-secondary: 'Share Tech Mono', monospace;
 $c-default: $white;
-$-accent: $purple;
+$c-accent: $purple;
+$c-bg: $black;
 
+
+$f-base: 1.6rem;
+$f-xs:1.8rem;
+$f-s:2.4rem;
+$f-m:2.8rem;
+$f-l:3rem;
+$f-xl:3.6rem;
+$f-2xl:4.8rem;
 
 /**
 * Breakpoints
