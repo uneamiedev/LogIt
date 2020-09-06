@@ -2,6 +2,61 @@
 
 @section('content')
 
+<section class="container">
+    <form action="" class="form">
+        <div class="field error">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Name of the timeline">
+            <em class="field__error">This name is already taken.</em>
+        </div>
+
+        <div class="field">
+            <label for="description" class="">{{ __('Description') }}</label>
+            <textarea name="description" id="description" cols="30" rows="10" placeholder="Tell us about your project"></textarea>
+        </div>
+
+        <div class="field field--checkbox">
+            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+            <label class="form-check-label" for="remember">
+                {{ __('Remember Me') }}
+            </label>
+        </div>
+
+        <div class="form__footer">
+            <a href="#" class="btn btn--tertiary">Cancel</a>
+            <button type="submit" class="btn btn--primary">
+                {{ __('Start timeline') }}
+            </button>
+        </div>
+    </form>
+</section>
+
+<section class="container">
+    <form action="" class="form">
+        <div class="field">
+            <label for="timelineSelect">{{ __('Pick a timeline') }}</label>
+            <select name="timeline" id="timelineSelect" class="custom-select">
+                <option value="LogIt">{{ __('LogIt') }}</option>
+                <option value="LogIt">{{ __('30 years of website') }}</option>
+                <option value="LogIt">{{ __('CV') }}</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="body" class="">{{ __('Body') }}</label>
+            <textarea name="body" id="body" cols="30" rows="10" placeholder="Tell us about your project"></textarea>
+        </div>
+
+        <div class="form__footer">
+            <a href="#" class="btn btn--tertiary">Cancel</a>
+            <button type="submit" class="btn btn--primary">
+                {{ __('Start timeline') }}
+            </button>
+        </div>
+    </form>
+</section>
+
 
 <section class="feed container">
     <article class="log">
