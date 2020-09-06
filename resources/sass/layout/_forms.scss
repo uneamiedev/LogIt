@@ -1,0 +1,10 @@
+.form {
+    border: 1px solid $white;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+
+    &__footer {
+        align-self: flex-end;
+    }
+}
