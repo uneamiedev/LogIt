@@ -1,0 +1,61 @@
+.header {
+    padding: 4.5rem 0 1.5rem;
+    @include gradient('', true, $purple);
+
+    &--profile {
+        h1, p {
+            text-align: left;
+        }
+
+        &__username {
+            display: block;
+            margin: 0.5rem 0 2rem;
+        }
+
+        &__misc {
+            margin-bottom: 3rem;
+
+            span {
+                display: block;
+                position: relative;
+                margin-left: 2rem;
+                margin-bottom: 1rem;
+
+                &::before {
+                    @include pseudo($content: url('/images/svg/link.svg'));
+                    margin-left: -2rem;
+                }
+
+                &:first-child::before {
+                    @include pseudo($content: url('/images/svg/flag-alt.svg'));
+                }
+
+            }
+
+        }
+    }
+
+    &--timeline {
+        background-color: $c-bg;
+        background-image: none;
+
+        h1 {
+            margin-bottom: 1.5rem;
+
+        }
+
+        h1, p {
+            text-align: left;
+        }
+
+        .meta {
+            margin-bottom: 2.5rem;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .link {
+            font-size: 14px;
+        }
+    }
+}
