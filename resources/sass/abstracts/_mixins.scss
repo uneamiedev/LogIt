@@ -93,7 +93,7 @@
 *
 * Set of mixins to use to set element's background to gradient
 */
-@mixin gradient($theme, $top-to-bottom: false, $color:'') {
+@mixin gradient($theme:'', $top-to-bottom: false, $color:'') {
 
     $deg: '90deg';
 
@@ -118,7 +118,7 @@
         background-image: linear-gradient(unquote($deg), $pink 0%, $purple 100%);
     }
 
-    @if ($theme == 'none') {
+    @if ($theme == '') {
         background-color: $color;
         background-image: linear-gradient(unquote($deg), $color , $black 100%);
     }
