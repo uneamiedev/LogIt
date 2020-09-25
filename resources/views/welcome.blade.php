@@ -14,7 +14,7 @@
         <p class="header-section--profile__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, fuga molestiae! Assumenda corrupti mollitia id.</p>
         <div class="header-section--profile__misc">
             <span>The world wide web</span>
-            <span><a href="#">30yearsofweb.site</a></span>
+            <span><a class="is-link" href="#">30yearsofweb.site</a></span>
         </div>
     </div>
 
@@ -31,12 +31,12 @@
 <header class="header-section header-section--timeline container">
     <h1 class="text-reveal">30 Years Of Website</h1>
     <div class="meta">
-        <address>by <a href="#" rel="author" class="is-bold">Amy</a></address>
+        <address>by <a href="#" rel="author" class="is-bold is-link">Amy</a></address>
         <div>created on <time pubdate datetime="2020-08-26">26/08/2020</time> | updated on <time datetime="2020-09-06">06/09/2020</time>
         </div>
     </div>
     <p>This project was build to share the information I gather in my search on web history</p>
-    <a class="link" href="#">30yearsofweb.site</a>
+    <a class="is-link" href="#">30yearsofweb.site</a>
 </header>
 
 <section class="container">
