@@ -4,8 +4,7 @@
     align-items: center;
 
     &__logo {
-        min-width: 65px;
-        max-width: 100px;
+        max-width: 80px;
         overflow: hidden;
 
         img {
@@ -19,7 +18,13 @@
         display: flex;
 
         li {
-            margin-left: 1.5rem;
+            margin-left: 1rem;
+
+            @include for-phone-only {
+                .btn {
+                    padding: 1.5rem;
+                }
+            }
         }
     }
 }
