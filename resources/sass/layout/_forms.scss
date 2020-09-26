@@ -1,9 +1,14 @@
 .form {
     display: flex;
     flex-direction: column;
-    padding: 3rem;
+    padding: 3rem 0;
 
     &__footer {
         align-self: flex-end;
+
+        .is-link {
+            font-size: 1.3rem;
+            margin-right: 1.5rem;
+        }
     }
 }
