@@ -1,0 +1,28 @@
+.timeline-excerpt {
+    border: 1px solid $c-border;
+    margin-bottom: 3rem;
+
+    &__title,
+    &__desc,
+    .actions {
+        margin-bottom: 0;
+    }
+
+    &__title,
+    &__desc,
+    &__meta,
+    .actions {
+        padding: 1.5rem;
+    }
+
+    &__title,
+    &__desc {
+        text-align: left;
+    }
+
+    &__meta {
+        border-top: 1px solid $c-border;
+        font-size: 1.3rem;
+        line-height: 1.2;
+    }
+}
