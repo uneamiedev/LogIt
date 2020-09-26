@@ -1,6 +1,7 @@
+@php($url = Auth::check() ? route('home') : url('/'))
 <header class="header">
     <nav class="navbar container">
-        <a class="navbar__logo" href="{{ url('/') }}">
+        <a class="navbar__logo" href="{{ $url }}">
             <img src="{{ asset('images/svg/logit.svg') }}" alt="LogIt logo">
         </a>
 
