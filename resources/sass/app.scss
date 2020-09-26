@@ -19,6 +19,8 @@
 @import 'layout/header';
 @import 'layout/header-section';
 @import 'layout/forms';
+@import 'layout/timeline';
+@import 'layout/timeline-feed';
 
 // Components
 @import 'components/buttons';
@@ -27,7 +29,9 @@
 @import 'components/avatars';
 @import 'components/fields';
 @import 'components/navbar';
-
+@import 'components/actions';
+@import 'components/empty-state';
+@import 'components/timeline-excerpt';
 // Pages
 @import 'pages/auth';
 
