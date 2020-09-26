@@ -85,3 +85,7 @@ a {
 .is-link {
     text-decoration: underline;
 }
+
+.is-danger:hover {
+    color: $c-error;
+}
