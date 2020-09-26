@@ -1,0 +1,20 @@
+.actions {
+    &--timeline {
+        margin-bottom: 3rem;
+
+        .btn {
+            display: block;
+            min-width: 100%;
+        }
+
+        @include for-tablet-portrait-up {
+            display: flex;
+
+            .btn {
+                min-width: unset;
+                margin-right: 1rem;
+            }
+        }
+
+    }
+}
