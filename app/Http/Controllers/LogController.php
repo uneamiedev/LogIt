@@ -48,6 +48,6 @@ class LogController extends Controller
         $timeline = $log->timeline;
         $log->delete();
 
-        return redirect()->route('timeline.show', ['timeline' => $timeline]);
+        return redirect()->back();
     }
 }
