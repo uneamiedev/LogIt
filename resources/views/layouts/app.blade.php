@@ -18,10 +18,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app" @if(Request::path() === 'login' || Request::path() === 'register') class="auth-page" @endif>
+    <div id="app" @if( Request::is('login') || Request::is('register') ) class="auth-page" @endif>
         @include('common.header')
 
-        <main class="main @if(Request::path() === 'login' || Request::path() === 'register') {{Request::path()}}-section @endif">
+        <main class="main @if( Request::is('login') || Request::is('register') ) {{Request::path()}}-section @endif">
             @yield('content')
         </main>
 
