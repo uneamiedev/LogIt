@@ -26,4 +26,10 @@
         background-color: $white;
         border: 2px solid $white;
     }
+
+    &--danger:hover {
+        color: $white;
+        background-color: $c-error;
+        border: 2px solid $c-error;
+    }
 }
