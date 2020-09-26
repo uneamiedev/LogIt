@@ -1,17 +1,14 @@
-<div class="log mb-4">
-    <div class="rounded-circle bg-secondary" style="height: 50px; width: 50px;">
-        <a href="#"><img src="#" alt="{{ $log->user->name }}"></a>
-    </div>
-    <h4>{{ $log->user->name }} @<span>{{ $log->user->name }}</span></h4>
-    <p>{{ $log->body }}</p>
-    {{-- TO DO: pass $user->username to the route --}}
-    <a class="badge badge-pill badge-primary" href="{{ route('timeline.show', ['timeline' => $log->timeline->slug, 'user' => $log->user->username]) }}">Project: {{ $log->timeline->title  }}</a>
-    @can('delete', $log)
-    <form method="POST" action="{{ route('log.destroy', $log) }}">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-outline-danger" type="submit">{{ __('Delete log')}}</button>
-        {{-- TO DO : Add confirmation --}}
-    </form>
-    @endcan
-</div>
+<article class="log">
+    @include('partials.logs.actions')
+    <header class="log__header">
+    <div class="avatar avatar--{{ $log->user->theme }}"></div>
+    <a href="{{ route('profile.show', $log->user)}}" class="log__header__name"><span>{{ $log->user->name }} </span>{{'@'}}{{ $log->user->username }} </a>
+    </header>
+    <p class="log__text">
+        {{ $log->body }}
+    </p>
+    <footer class="log__footer">
+        <time datetime="">05/09/2020</time>
+        <a href="{{ route('timeline.show', ['timeline' => $log->timeline->slug, 'user' => $log->user->username]) }}" class="log__footer__timeline">{{ $log->timeline->title  }}</a>
+    </footer>
+</article>
