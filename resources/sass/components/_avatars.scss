@@ -2,7 +2,10 @@
     width: 60px;
     height: 60px;
     border-radius: 100%;
-    @include gradient-avatar('purple');
+
+    &--purple {
+        @include gradient-avatar('purple');
+    }
 
     &--cyan {
         @include gradient-avatar('cyan');
