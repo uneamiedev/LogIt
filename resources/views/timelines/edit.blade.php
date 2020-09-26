@@ -1,49 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            {{-- Log Creation form --}}
-            <div class="card mb-4">
-                <div class="card-header">{{ __('Edit timeline:') }} {!! old('title', $timeline->title) !!}</div>
+<section class="container">
+    <h1>{{ __('Edit') }} {!! old('title', $timeline->title) !!}</h1>
 
-                <form method="POST" action="{{ route('timeline.update', $timeline) }}">
-                    @csrf
-                    @method('PUT')
-                    <div class="card-body">
-                        {{-- Title --}}
-                        <div class="form-group">
-                            <label for="timelineTitle">{{ __('Project Title')}}</label>
-                            <input required class="form-control" type="text" name="title" id="timelineTitle" placeholder="My project" value={{ old('title', $timeline->title ?? '') }}>
-                            @error('title')
-                                <div class="bg-danger text-white">{{ $message }}</div>
-                            @enderror
-                        </div>
+    <form method="POST" action="{{ route('timeline.update', $timeline) }}" class="form">
+        @csrf
+        @method('PUT')
 
-                        {{-- Description --}}
-                        <div class="from-group">
-                            <label for="timelineDescription">{{ __('Description') }}</label>
-                            <textarea required class="form-control" name="description" id="timelineDescription" rows="3" placeholder="What's the project about ?">{{ old('description', $timeline->description ?? '') }}</textarea>
-                            @error('description')
-                                <div class="bg-danger text-white">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        {{-- Url web --}}
-                        <div class="form-group">
-                            <label for="timelineUrlWeb">{{ __('Link to your project') }}</label>
-                            <input class="form-control" type="url" name="url_web" id="timelineUrlWeb" placeholder="https://myproject.gg" value="{{ old('url_web', $timeline->url_web ?? '') }}">
-                            @error('url_web')
-                                <div class="bg-danger text-white">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <hr>
-                        <button type="submit" class ="btn btn-secondary">{{ __('Sauvegarder') }}</button>
-                    </div>
-                </form>
+            {{-- Title --}}
+            <div class="field @error('title') error @enderror">
+                <label for="timelineTitle">{{ __('Project Title')}}</label>
+                <input required  type="text" name="title" id="timelineTitle" placeholder="My project" value={{ old('title', $timeline->title ?? '') }}>
+                @error('title')
+                    <em>{{ $message }}</em>
+                @enderror
             </div>
-        </div>
-    </div>
-</div>
+
+            {{-- Description --}}
+            <div class="field @error('description') error @enderror">
+                <label for="timelineDescription">{{ __('Description') }}</label>
+                <textarea required  name="description" id="timelineDescription" rows="3" placeholder="What's the project about ?">{{ old('description', $timeline->description ?? '') }}</textarea>
+                @error('description')
+                    <em>{{ $message }}</em>
+                @enderror
+            </div>
+
+            {{-- Url web --}}
+            <div class="field @error('url_web') error @enderror">
+                <label for="timelineUrlWeb">{{ __('Link to your project') }}</label>
+                <input  type="url" name="url_web" id="timelineUrlWeb" placeholder="https://myproject.gg" value="{{ old('url_web', $timeline->url_web ?? '') }}">
+                @error('url_web')
+                    <em>{{ $message }}</em>
+                @enderror
+            </div>
+
+            <div class="form__footer">
+                <a class="btn btn--tertiary" href="{{ URL::previous() }}">{{ _('Cancel') }}</a>
+                <button type="submit" class ="btn btn--primary">{{ __('Sauvegarder') }}</button>
+            </div>
+
+    </form>
+</section>
 @endsection
