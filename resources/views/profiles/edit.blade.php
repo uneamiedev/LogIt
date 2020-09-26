@@ -130,6 +130,9 @@
 
         <button type="submit" class ="btn btn-secondary">Save change</button>
     </form>
+    @can('delete', auth()->user())
+        @include('profiles.delete')
+    @endcan
     </div>
 </div>
 @endsection
