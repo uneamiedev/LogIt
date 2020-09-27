@@ -61,4 +61,11 @@ class ProfileController extends Controller
 
         return view('welcome');
     }
+
+    public function following(User $user)
+    {
+        return view('profiles.show', [
+            'user'          => $user,
+        ]);
+    }
 }
