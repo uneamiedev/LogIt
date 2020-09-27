@@ -9,6 +9,9 @@
         @case('profile.show')
             @include('partials.profiles.body-logs')
             @break
+        @case('timeline.index.public')
+            @include('partials.profiles.body-timelines')
+            @break
         @endswitch
     </section>
 
