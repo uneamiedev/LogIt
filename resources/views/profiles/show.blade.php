@@ -13,7 +13,10 @@
             @include('partials.profiles.body-timelines')
             @break
         @case('profile.following')
-            @include('partials.profiles.body-following')
+            @include('partials.profiles.body-follow', ['users' => $user->follows])
+            @break
+        @case('profile.followers')
+            @include('partials.profiles.body-follow', ['users' => $user->followers])
             @break
     @endswitch
     </section>
