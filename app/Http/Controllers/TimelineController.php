@@ -19,7 +19,7 @@ class TimelineController extends Controller
 
     public function publicIndex(User $user)
     {
-        return view('timelines.index', [
+        return view('profiles.show', [
             'timelines' => $user->timelines()->get(),
             'user'      => $user,
         ]);
