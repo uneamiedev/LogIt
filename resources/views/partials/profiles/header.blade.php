@@ -1,5 +1,6 @@
 <header class="header-section header-section--profile">
     <div class="container">
+        @include('partials.profiles.actions')
         <span class="h1">{{ $user->name }}</span>
         <span class="header-section--profile__username">{{'@'}}{{ $user->username }}</span>
         @if($user->bio)
