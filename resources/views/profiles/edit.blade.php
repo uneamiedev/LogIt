@@ -1,138 +1,95 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- Header --}}
-<div class="jumbotron">
-    <div class="container">
+
+<section class="container">
     <h1>{{ __('Edit profile')}}</h1>
-    <form method="POST" action="{{ route('profile.update', ['user' => $user->username] )}}">
+    <form method="POST" action="{{ route('profile.update', ['user' => $user->username] )}}" class="form">
         @csrf
         @method('PATCH')
 
-        <div class="form-group row">
-            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email Address') }}</label>
+        <div class="field @error('email') error @enderror">
+            <label for="email">{{ __('Email Address') }}</label>
+            <input id="email" type="email" name="email" value="{{ old('email', $user->email ?? '') }}" required autofocus>
 
-            <div class="col-md-6">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $user->email ?? '') }}" required autofocus>
-
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+            @error('email')
+                <em>{{ $message }}</em>
+            @enderror
         </div>
 
-        <hr>
-        <div class="form-group row">
-            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+        <div class="field @error('name') error @enderror">
+            <label for="name">{{ __('Name') }}</label>
+            <input id="name" type="text" name="name" value="{{ old('name', $user->name ?? '') }}" required autofocus>
 
-            <div class="col-md-6">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name ?? '') }}" required autofocus>
-
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+            @error('name')
+                <em>{{ $message }}</em>
+            @enderror
         </div>
 
-        <div class="form-group row">
-            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+        <div class="field @error('username') error @enderror">
+            <label for="username">{{ __('Username') }}</label>
+            <span class="hint">{{ __('max 30 characters (letters, numbers, undescore)') }}</span>
+            <input id="username" type="text" name="username" value="{{ old('username', $user->username ?? '') }}" required autofocus>
 
-            <div class="col-md-6">
-                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username', $user->username ?? '') }}" required autofocus>
+            @error('username')
+                <em>{{ $message }}</em>
+            @enderror
+        </div>
 
-                @error('username')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+        <div class="field @error('bio') error @enderror">
+        <label for="bio">{{ __('Bio') }} {{ __('(Optional)') }}</label>
+            <span class="hint">{{ __('max 255 characters') }}</span>
+            <textarea name="bio" id="bio" rows="3" placeholder="Tell us about yourself!">{{ old('bio', $user->bio ?? '') }}</textarea>
+            @error('bio')
+                <em>{{ $message }}</em>
+            @enderror
         </div>
 
 
-        <div class="form-group row">
-            <label for="bio" class="col-md-4 col-form-label text-md-right">{{ __('Bio') }}</label>
+        <div class="field @error('link_web') error @enderror">
+            <label for="link_web">{{ __('Link') }} {{ __('(Optional)') }}</label>
+            <span class="hint">{{ __('Website, GitHub, GitLab, etc') }}</span>
+            <input id="link_web" type="url" name="link_web" value="{{ old('link_web', $user->link_web ?? '') }}" autofocus>
 
-            <div class="col-md-6">
-                <input id="bio" type="text" class="form-control @error('bio') is-invalid @enderror" name="bio" value="{{ old('bio', $user->bio ?? '') }}" autofocus>
+            @error('link_web')
+                <em>{{ $message }}</em>
+            @enderror
+        </div>
 
-                @error('bio')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+        <div class="field @error('location') error @enderror">
+            <label for="location">{{ __('Location') }} {{ __('(Optional)') }}</label>
+            <input id="location" type="text" name="location" value="{{ old('location', $user->location ?? '') }}" autofocus>
+
+            @error('location')
+                <em>{{ $message }}</em>
+            @enderror
         </div>
 
 
-        <div class="form-group row">
-            <label for="link_web" class="col-md-4 col-form-label text-md-right">{{ __('Link') }}</label>
+        <div class="h3">Confirm your password to save the changes</div>
+        <div class="field @error('password') error @enderror">
+            <label for="password">{{ __('Password') }}</label>
+            <input id="password" type="password" name="password" required autofocus>
 
-            <div class="col-md-6">
-                <input id="link_web" type="url" class="form-control @error('link_web') is-invalid @enderror" name="link_web" value="{{ old('link_web', $user->link_web ?? '') }}" autofocus>
-
-                @error('link_web')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+            @error('password')
+                <em>{{ $message }}</em>
+            @enderror
         </div>
 
-        <div class="form-group row">
-            <label for="location" class="col-md-4 col-form-label text-md-right">{{ __('Location') }}</label>
+        <div class="field">
+            <label for="password_confirmation">{{ __('Confirm Password') }}</label>
+            <input id="password_confirmation" type="password" name="password_confirmation" required autofocus>
 
-            <div class="col-md-6">
-                <input id="location" type="text" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location', $user->location ?? '') }}" autofocus>
-
-                @error('location')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+            @error('password_confirmation')
+                <em>{{ $message }}</em>
+            @enderror
         </div>
 
-        <hr>
-        <h3>Confirm your password to save the changes</h2>
-        <div class="form-group row">
-            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-            <div class="col-md-6">
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autofocus>
-
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+        <div class="form__footer">
+            <a class="btn btn--tertiary" href="{{ URL::previous() }}">{{ _('Cancel') }}</a>
+            <button type="submit" class ="btn btn--primary">Save change</button>
         </div>
-
-        <div class="form-group row">
-            <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-            <div class="col-md-6">
-                <input id="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autofocus>
-
-                @error('password_confirmation')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-
-        <hr>
-
-        <button type="submit" class ="btn btn-secondary">Save change</button>
     </form>
-    @can('delete', auth()->user())
-        @include('profiles.delete')
-    @endcan
-    </div>
-</div>
+</section>
+
 @endsection
