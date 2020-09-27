@@ -12,7 +12,10 @@
         @case('timeline.index.public')
             @include('partials.profiles.body-timelines')
             @break
-        @endswitch
+        @case('profile.following')
+            @include('partials.profiles.body-following')
+            @break
+    @endswitch
     </section>
 
 @endsection
