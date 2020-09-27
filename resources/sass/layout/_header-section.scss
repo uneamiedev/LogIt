@@ -33,6 +33,15 @@
             }
 
         }
+
+        .container {
+            position: relative;
+        }
+        .form-follow ,
+        .btn-edit {
+            position: absolute;
+            right: 0;
+        }
     }
 
     &--timeline {
