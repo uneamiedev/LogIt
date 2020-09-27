@@ -1,16 +1,7 @@
-@auth
-    @unless(auth()->user()->is($user))
-    <form method="POST" action="{{ route('follow.store', $user->id) }}">
-        @csrf
-        <button type="submit" class="btn btn-primary btn-lg">
-            {{ auth()->user()->isFollowing($user) ? 'Unfollow' : 'Follow'}}
-        </button>
-    </form>
-    @endunless
-@endauth
+@include('partials.profiles.action-follow')
 
 @can('update', $user)
-    <a href="{{ route('profile.edit', $user->id) }}" class="btn btn-outline-secondary btn-lg">
+    <a href="{{ route('profile.edit', $user->id) }}" class="btn btn--secondary btn-edit">
         {{ __('Edit profile') }}
     </a>
 @endcan
