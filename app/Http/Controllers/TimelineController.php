@@ -39,7 +39,7 @@ class TimelineController extends Controller
         $attributes = $request->validate([
             'title'         => 'required|max:255',
             'description'   => 'required|max:255',
-            'url_web'       => 'url',
+            'url_web'       => 'nullable|url',
         ]);
 
         $timeline = Timeline::create([
