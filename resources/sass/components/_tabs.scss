@@ -4,6 +4,8 @@
     ul {
         display: flex;
         justify-content: space-around;
+        @include mx-auto;
+        max-width: 1100px;
     }
 
     &__item {
