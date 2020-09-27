@@ -69,7 +69,7 @@ class ProfileController extends Controller
         return redirect('/');
     }
 
-    public function following(User $user)
+    public function follow(User $user)
     {
         return view('profiles.show', [
             'user'          => $user,
