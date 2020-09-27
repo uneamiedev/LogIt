@@ -29,9 +29,9 @@ class ProfileController extends Controller
     {
         $attributes = $request->validate([
             'name'      => 'string|required|max:255',
-            'bio'       => 'string|max:255',
-            'link_web'  => 'url',
-            'location'  => 'string|max:50',
+            'bio'       => 'nullable|string|max:255',
+            'link_web'  => 'nullable|url',
+            'location'  => 'nullable|string|max:50',
             'username'  => 'string|required|max:50|alpha_dash|'. Rule::unique('users')->ignore($user),
             'email'     => 'required|email|max:255|'. Rule::unique('users')->ignore($user),
             'password'  => 'string|required|min:8|max:255|confirmed',
