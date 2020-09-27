@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function() {
 
     // Profile
     Route::get('/settings/{user}/edit', 'ProfileController@edit')->name('profile.edit')->middleware('can:update,user');
+    Route::get('/settings/{user}/delete', 'ProfileController@delete')->name('profile.delete')->middleware('can:delete,user');
     Route::patch('/@{user:username}', 'ProfileController@update')->name('profile.update')->middleware('can:update,user');
     Route::delete('/settings/{user}', 'ProfileController@destroy')->name('profile.destroy')->middleware('can:delete,user');
 

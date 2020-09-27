@@ -55,11 +55,18 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function delete(User $user)
+    {
+        return view('profiles.delete', [
+            'user'  => $user,
+        ]);
+    }
+
     public function destroy(User $user)
     {
         $user->delete();
 
-        return view('welcome');
+        return redirect('/');
     }
 
     public function following(User $user)
