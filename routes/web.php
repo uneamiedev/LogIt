@@ -52,7 +52,8 @@ Route::get('/@{user:username}/timelines/{timeline}', 'TimelineController@show')-
 
 // ----- Profile
 Route::get('/@{user:username}', 'ProfileController@show')->name('profile.show');
-Route::get('/@{user:username}/following', 'ProfileController@following')->name('profile.following');
+Route::get('/@{user:username}/following', 'ProfileController@follow')->name('profile.following');
+Route::get('/@{user:username}/followers', 'ProfileController@follow')->name('profile.followers');
 
 // ----- General
 Route::get('/welcome', function () {
