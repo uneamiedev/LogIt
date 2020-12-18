@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <figure class="hero__img">
+    <figure class="hero__img fade-in">
         <img src="{{ asset('images/timeline.png') }}" alt="Illustration isométrique réprésentant une timeline">
     </figure>
 </section>
