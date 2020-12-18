@@ -22,11 +22,11 @@
             object-fit: cover;
         }
 
-        max-height: 40vh;
         overflow: hidden;
     }
 
     @include for-tablet-landscape-up  {
+        height: calc(100vh - 100px);
         display: flex;
         align-items: center;
 
