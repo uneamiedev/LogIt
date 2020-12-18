@@ -1,5 +1,5 @@
 .hero {
-    max-height: 500px;
+    min-height: 400px;
     margin-top: 5rem;
     &__content {
 
@@ -17,8 +17,13 @@
     }
 
     &__img {
-        @include hidden();
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
 
+        max-height: 40vh;
+        overflow: hidden;
     }
 
     @include for-tablet-landscape-up  {
@@ -49,12 +54,8 @@
             display: block;
             visibility: visible;
             position: relative;
-            overflow: hidden;
 
-            img {
-                width: 100%;
-                object-fit: cover;
-            }
+            max-height: 100%;
 
             &::after {
                 @include pseudo($content:"");
