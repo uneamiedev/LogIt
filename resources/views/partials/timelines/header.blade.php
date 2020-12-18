@@ -11,6 +11,6 @@
     @endif
 
     @if($timeline->url_web)
-        <a class="is-link" href="{{ $timeline->url_web }}">30yearsofweb.site</a>
+        <a class="is-link" href="{{ $timeline->url_web }}" target="_blank" rel="noopener noreferrer">Voir le projet en ligne</a>
     @endif
 </header>
