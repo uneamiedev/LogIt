@@ -8,7 +8,7 @@
         {{ $log->body }}
     </p>
     <footer class="log__footer">
-        <time datetime="">05/09/2020</time>
+        <time datetime="{!! date('d/m/Y', strtotime($log->created_at)) !!}">{!! date('d/m/Y', strtotime($log->created_at)) !!}</time>
         <a href="{{ route('timeline.show', ['timeline' => $log->timeline->slug, 'user' => $log->user->username]) }}" class="log__footer__timeline">{{ $log->timeline->title  }}</a>
     </footer>
 </article>
