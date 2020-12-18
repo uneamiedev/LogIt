@@ -1,3 +1,3 @@
 <footer>
-&copy; 2020 LogIt - <a href="#">terms and conditions</a>
+<span>&copy; 2020 LogIt - <a href="#">terms and conditions</a></span>
 </footer>
