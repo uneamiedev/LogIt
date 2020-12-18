@@ -35,3 +35,21 @@
     0% {transform: translateX(0)}
     100% {transform: translateX(200%)}
 }
+
+
+.fade-in {
+    opacity: 0;
+    animation: fade-in 1s ease-in-out 0s forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 10%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
