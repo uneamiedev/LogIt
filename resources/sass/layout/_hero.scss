@@ -28,8 +28,10 @@
 
     @include for-tablet-landscape-up  {
         display: flex;
+        align-items: center;
 
         &__content {
+            margin-top: -25rem;
             margin-right: 7rem;
             max-width: 48%;
 
