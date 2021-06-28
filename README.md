@@ -31,7 +31,7 @@ Mais LogIt, c’est également une **plateforme sociale**. On peut y suivre d’
 - Likes
 
   
-## :round_pushpin: Stack
+## 🛠️ Stack
 
 - Laravel
 - Javascript
