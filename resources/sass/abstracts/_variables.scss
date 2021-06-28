@@ -1,0 +1,48 @@
+/**
+* Colors
+*/
+
+// Primary
+$purple: #7800ff;
+$cyan: #5fd5ff;
+$pink: #fe3472;
+$orange: #ff502a;
+
+// Secondary
+$purple-light: #8364ce;
+$green: #46bcaa;
+$indigo: #4835d5;
+$orange-light: #ff7f37;
+
+// Text
+$white: #ffffff;
+
+// Background
+$black: #101010;
+
+
+/**
+* Typography
+*/
+$f-primary: 'Montserrat', sans-serif;
+$f-secondary: 'Share Tech Mono', monospace;
+$c-default: $white;
+$c-accent: $purple;
+$c-border: $indigo;
+$c-bg: $black;
+$c-error: $orange;
+
+$f-base: 1.6rem;
+$f-xs:1.8rem;
+$f-s:2.4rem;
+$f-m:2.8rem;
+$f-l:3rem;
+$f-xl:3.6rem;
+$f-2xl:4.8rem;
+
+/**
+* Breakpoints
+*/
+$small: 600px;
+$medium: 900px;
+$large: 1200px;

@@ -1,0 +1,22 @@
+.auth-page {
+
+    .header .navbar .btn {
+        display:none;
+    }
+
+    section {
+        margin-top: 3rem;
+    }
+
+    .tabs__item {
+        width: 50%;
+    }
+
+    .login-section,
+    .redister-section {
+        @include for-tablet-landscape-up {
+            @include mx-auto;
+            max-width: 700px;
+        }
+    }
+}

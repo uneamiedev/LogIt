@@ -1,0 +1,35 @@
+.btn {
+    padding: 15px 30px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+
+    @include for-tablet-portrait-up {
+        padding: 20px 30px;
+    }
+
+    &--primary {
+        @include gradient('purple');
+
+        &:hover {
+            background-image: none;
+        }
+    }
+
+    &--secondary {
+        border: 2px solid $white;
+    }
+
+    &:hover {
+        color: $c-accent;
+        background-color: $white;
+        border: 2px solid $white;
+    }
+
+    &--danger:hover {
+        color: $white;
+        background-color: $c-error;
+        border: 2px solid $c-error;
+    }
+}

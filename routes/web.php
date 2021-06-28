@@ -14,9 +14,63 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('front-page');
+});
+
+Route::middleware('auth')->group(function() {
+    // Home
+    Route::get('/home', 'LogController@index')->name('home');
+
+    // Timelines (index, create, store, show, edit, update, destroy)
+    Route::get('/timelines', 'TimelineController@index')->name('timeline.index');
+    Route::post('/timelines', 'TimelineController@store')->name('timeline.store')->middleware('can:create,App\Timeline');
+    Route::get('/timelines/{timeline}/edit', 'TimelineController@edit')->name('timeline.edit')->middleware('can:update,timeline');
+    Route::put('/timelines/{timeline}', 'TimelineController@update')->name('timeline.update');
+    Route::delete('/timelines/{timeline}', 'TimelineController@destroy')->name('timeline.destroy')->middleware('can:delete,timeline');
+
+    // Logs
+    Route::post('/logs', 'LogController@store')->middleware('can:create,App\Log');;
+    Route::delete('/logs/{log}', 'LogController@destroy')->name('log.destroy')->middleware('can:delete,log');
+
+    // Follow
+    Route::post('/user/{user}/follow', 'FollowController@store')->name('follow.store');
+
+    // Profile
+    Route::get('/settings/{user}/edit', 'ProfileController@edit')->name('profile.edit')->middleware('can:update,user');
+    Route::get('/settings/{user}/delete', 'ProfileController@delete')->name('profile.delete')->middleware('can:delete,user');
+    Route::patch('/@{user:username}', 'ProfileController@update')->name('profile.update')->middleware('can:update,user');
+    Route::delete('/settings/{user}', 'ProfileController@destroy')->name('profile.destroy')->middleware('can:delete,user');
+
+    // Like
+    Route::post('/timelines/{timeline}/like', 'LikeController@store')->name('like.store');
+});
+
+// Public routes
+// ----- Timelines
+Route::get('/@{user:username}/timelines', 'TimelineController@publicIndex')->name('timeline.index.public');
+Route::get('/@{user:username}/timelines/{timeline}', 'TimelineController@show')->name('timeline.show');
+
+// ----- Profile
+Route::get('/@{user:username}', 'ProfileController@show')->name('profile.show');
+Route::get('/@{user:username}/following', 'ProfileController@follow')->name('profile.following');
+Route::get('/@{user:username}/followers', 'ProfileController@follow')->name('profile.followers');
+
+// ----- General
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/faq', function () {
+    return view('welcome');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/team', function () {
+    return view('welcome');
+});
+
+// TO DO :
+// - Site map
+// - Legal
+// - Cookies / Privacy
+
+Auth::routes();
